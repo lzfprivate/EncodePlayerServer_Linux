@@ -1,0 +1,1 @@
+g++ -o "/home/lll/projects/EncodePlayerServer/bin/x64/Debug/EncodePlayerServer.out" -Wl,--no-undefined -Wl,-z,relro -Wl,-z,now -Wl,-z,noexecstack /home/lll/projects/EncodePlayerServer/obj/x64/Debug/main.o /home/lll/projects/EncodePlayerServer/obj/x64/Debug/Process.o
