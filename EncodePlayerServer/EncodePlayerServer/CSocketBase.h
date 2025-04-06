@@ -110,6 +110,10 @@ public:
 		}
 	}
 
+	operator int() const{
+		return m_socket;
+	}
+
 protected:
 	int		m_socket;			//通信句柄
 	int		m_iStatus;			//状态		0：未初始化 1：初始化完成 2：连接完成 3：关闭

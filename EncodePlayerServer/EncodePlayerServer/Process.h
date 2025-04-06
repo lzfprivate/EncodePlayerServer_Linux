@@ -13,7 +13,7 @@ public:
 	bool SetFunctionEntry(_FUNCTION_ function, _ARGS_... args)
 	{
 		m_function = new CFuntionProcess<_FUNCTION_,_ARGS_...>(function,args...);
-		return m_function;
+		return m_function != nullptr;
 	}
 
 public:

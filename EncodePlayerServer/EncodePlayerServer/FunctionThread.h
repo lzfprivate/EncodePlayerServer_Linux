@@ -8,7 +8,7 @@ class CFunctionThread :
 {
 public:
 	CFunctionThread(_FUNCTION_ function, _ARGS_... args)
-		:m_binder(std::forward<_FUNCTION_>(function), std::forward<_ARGS_...>(args)...)
+		:m_binder(std::forward<_FUNCTION_>(function), std::forward<_ARGS_>(args)...)
 	{
 
 	}

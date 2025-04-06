@@ -35,7 +35,6 @@ int CreateClient(CProcess* process)
     Print(msg);
     close(fd);
     return 0;
-
 }
 
 int main()
@@ -54,7 +53,7 @@ int main()
     Print(ret == 0 ? " client create subprocess succeed" : " client create subprocess failed");
     Err_Return(0, ret, -2);
 
-    usleep(1000000 );
+    usleep(100 * 000);
 
     int fd = open("1.txt", O_RDWR | O_CREAT | O_APPEND);
     if (fd == -1) return -3;

@@ -32,7 +32,8 @@ int CProcess::CreateSubProcess()
 	{
 		close(m_pipes[1]);
 		m_pipes[1] = 0;
-		exit((*m_function)());
+		(*m_function)();
+		exit(0);
 	}
 	close(m_pipes[0]);
 	m_pipes[0] = 0;
@@ -51,9 +52,9 @@ int CProcess::SendFD(int fd)
 	};
 
 	iov[0].iov_base = buffer[0];
-	iov[0].iov_len = strlen(buffer[0]);
+	iov[0].iov_len = sizeof(buffer[0]);
 	iov[1].iov_base = buffer[1];
-	iov[1].iov_len = strlen(buffer[1]);
+	iov[1].iov_len = sizeof(buffer[1]);
 	hdr.msg_iov = iov;
 	hdr.msg_iovlen = 2;
 
@@ -66,7 +67,7 @@ int CProcess::SendFD(int fd)
 
 
 	hdr.msg_control = msg;
-	hdr.msg_controllen = CMSG_LEN(sizeof(int));
+	hdr.msg_controllen = msg->cmsg_len;
 
 	ssize_t ret = sendmsg(m_pipes[1], &hdr, 0);
 	free(msg);
@@ -79,10 +80,14 @@ int CProcess::RecvFD(int& fd)
 	msghdr hdr;
 	iovec iov[2];
 
-	iov[0].iov_base = (char*)"hello";
-	iov[0].iov_len = 6;
-	iov[0].iov_base = (char*)"hello";
-	iov[1].iov_len = 6;
+	char buffer[][10] = {
+		"",""
+	};
+
+	iov[0].iov_base = buffer[0];
+	iov[0].iov_len = sizeof(buffer[0]);
+	iov[1].iov_base = buffer[1];
+	iov[1].iov_len = sizeof(buffer[1]);
 	hdr.msg_iov = iov;
 	hdr.msg_iovlen = 2;
 

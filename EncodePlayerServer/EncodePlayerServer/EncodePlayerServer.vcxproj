@@ -76,9 +76,11 @@
   <PropertyGroup Label="UserMacros" />
   <ItemGroup>
     <ClCompile Include="CCommThread.cpp" />
+    <ClCompile Include="CLoggerServer.cpp" />
     <ClCompile Include="CSocketBase.cpp" />
     <ClCompile Include="Epoll.cpp" />
     <ClCompile Include="EpollData.cpp" />
+    <ClCompile Include="LogInfo.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Process.cpp" />
     <ClCompile Include="SocketLocal.cpp" />
@@ -86,6 +88,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CCommThread.h" />
+    <ClInclude Include="CLoggerServer.h" />
     <ClInclude Include="CommonBuffer.h" />
     <ClInclude Include="CSocketBase.h" />
     <ClInclude Include="Epoll.h" />
@@ -93,6 +96,7 @@
     <ClInclude Include="FunctionBase.h" />
     <ClInclude Include="FunctionThread.h" />
     <ClInclude Include="FuntionProcess.h" />
+    <ClInclude Include="LogInfo.h" />
     <ClInclude Include="Process.h" />
     <ClInclude Include="SocketLocal.h" />
     <ClInclude Include="ThreadPool.h" />
@@ -104,6 +108,11 @@
     <ClCompile>
       <CppLanguageStandard>gnu++11</CppLanguageStandard>
     </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Link>
+      <LibraryDependencies>pthread</LibraryDependencies>
+    </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />

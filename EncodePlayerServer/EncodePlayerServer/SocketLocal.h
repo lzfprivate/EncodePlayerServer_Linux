@@ -12,6 +12,7 @@ class CSocketLocal :
     public CSocketBase
 {
 public:
+	CSocketLocal();
 	CSocketLocal(CSocketParam param);
 	CSocketLocal(int fd);
 	CSocketLocal& operator=(const CSocketLocal& socket) = delete;

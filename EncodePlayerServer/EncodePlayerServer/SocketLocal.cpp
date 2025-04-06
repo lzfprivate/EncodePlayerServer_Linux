@@ -1,6 +1,10 @@
 #include "SocketLocal.h"
 #include <fcntl.h>
 
+CSocketLocal::CSocketLocal()
+{
+}
+
 CSocketLocal::CSocketLocal(CSocketParam param) : m_Param(param)
 {
 
