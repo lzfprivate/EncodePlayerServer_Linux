@@ -95,10 +95,13 @@ public:
 	{
 		Close();
 	}
-
+	//初始化 服务端：创建、绑定、监听	客户端：创建
 	virtual int Initialize(const CSocketParam& param) = 0;
+	//连接	服务端：接收客户端连接		客户端：主动连接服务端
 	virtual int Link(CSocketBase** client = nullptr) = 0;
+	//发送数据
 	virtual int Send(const CCommonBuffer& buffer) = 0;
+	//接收数据
 	virtual int Recv(CCommonBuffer& buffer) = 0;
 	void Close() {
 		m_iStatus = 3;

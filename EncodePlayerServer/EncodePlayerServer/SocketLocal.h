@@ -5,7 +5,8 @@ enum enSockParam
 	en_NONE = 0,
 	en_SERVER = 1,
 	en_TCP = 2,
-	en_NONBLOCK = 4
+	en_NONBLOCK = 4,
+	en_NETWORK = 8
 };
 
 class CSocketLocal :
@@ -20,7 +21,7 @@ public:
 
 public:
 	virtual int Initialize(const CSocketParam& param) ;
-	virtual int Link(CSocketBase** socketClient);
+	virtual int Link(CSocketBase** socketClient = nullptr);
 	virtual int Send(const CCommonBuffer& buffer);
 	virtual int Recv(CCommonBuffer& buffer);
 	void Close() {
